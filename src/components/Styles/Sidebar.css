@@ -1,0 +1,12 @@
+/* Layout Properties */
+#SideBar{
+top: 122px;
+left: 18px;
+width: 367px;
+height: 600px;
+
+background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+background: #13aa91 0% 0% no-repeat padding-box;
+border-radius: 16px;
+opacity: 1;
+}

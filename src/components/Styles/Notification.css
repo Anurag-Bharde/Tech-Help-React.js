@@ -1,0 +1,15 @@
+#notifytitle1{
+    /* background-color: #3b58c0; */
+    
+}
+
+#NotifyBar{
+    top: 18px;
+left: 18px;
+height: 72px;
+/* UI Properties */
+background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+background: #bd2525 0% 0% no-repeat padding-box;
+border-radius: 70px;
+opacity: 1;
+}

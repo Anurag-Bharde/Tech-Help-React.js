@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import {Patient} from './Type/types'
 import './App.css'
-
+import Notification from './components/Notification'
+import SideBar from './components/SideBar'
 function App() {
-  const [count, setCount] = useState<string[]>()
+  const [count, setCount] = useState<Patient[]>()
 
   useEffect(()=>{
     const func= async()=>{
@@ -25,13 +27,10 @@ function App() {
   },[])
 
   return (
-    <>
-     <div className='text-red-500'>Hello World</div>
-     <div>{count?.map((item:any, index:number)=>(
-      <div key={index}>{item.name}</div>
-     ))}</div>
-     
-    </>
+    <div className='bg-[#06F7F8] h-screen'>
+    <div className='pt-3 px-2'><Notification /></div>
+     <div className=' p-4'><SideBar counts={count ||[]} /></div>
+    </div>
   )
 }
 
