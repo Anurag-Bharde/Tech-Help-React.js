@@ -5,6 +5,10 @@ import {Patient} from './Type/types'
 import './App.css'
 import Notification from './components/Notification'
 import SideBar from './components/SideBar'
+import MainB from './components/MainB'
+import MainLow from './components/MainLow'
+import SideTop from './components/SideTop'
+import SideLow from './components/SideLow'
 function App() {
   const [count, setCount] = useState<Patient[]>()
 
@@ -27,9 +31,19 @@ function App() {
   },[])
 
   return (
-    <div className='bg-[#06F7F8] h-screen'>
-    <div className='pt-3 px-2'><Notification /></div>
+    <div className='bg-[#06F7F8] h-full'>
+    <div className='pt-2 px-2'><Notification /></div>
+    <div className='flex'>
      <div className=' p-4'><SideBar counts={count ||[]} /></div>
+     <div >
+      <div><MainB /></div>
+     <div><MainLow /></div>
+     </div>
+     <div>
+     <div><SideTop /></div>
+     <div><SideLow /></div>
+     </div>
+     </div>
     </div>
   )
 }

@@ -4,9 +4,9 @@
 }
 
 #NotifyBar{
-    top: 18px;
+    top: 12px;
 left: 18px;
-height: 72px;
+height: 58px;
 /* UI Properties */
 background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
 background: #bd2525 0% 0% no-repeat padding-box;

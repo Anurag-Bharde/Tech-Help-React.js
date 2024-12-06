@@ -13,7 +13,7 @@ const SideBar = ({counts}:{counts:Patient[]}) => {
 
             <div >
     <div className='relative px-4' style={{height:'600px'}}> {/* Added h-full */}
-        <div className='overflow-y-auto h-[calc(100%-20px)] -mx-4'> {/* Changed to use percentage */}
+        <div className='overflow-y-auto h-[] '> {/* Changed to use percentage */}
             {counts.map((items) => {
                 return <div className='h-10 w-full px-4'> 
                     <div className='truncate'>{items.name}</div>
