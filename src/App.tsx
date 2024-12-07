@@ -9,8 +9,14 @@ import MainB from './components/MainB'
 import MainLow from './components/MainLow'
 import SideTop from './components/SideTop'
 import SideLow from './components/SideLow'
+import {DataProvider} from './components/Context/DataCont'
+import { createTheme, MantineProvider } from '@mantine/core';
+
+
+
+
 function App() {
-  const [count, setCount] = useState<Patient[]>()
+  const [count, setCount] = useState<Patient[]>([])
 
   useEffect(()=>{
     const func= async()=>{
@@ -31,10 +37,12 @@ function App() {
   },[])
 
   return (
+    <MantineProvider >
+    <DataProvider initialPatients={count}>
     <div className='bg-[#06F7F8] h-full'>
     <div className='pt-2 px-2'><Notification /></div>
     <div className='flex'>
-     <div className=' p-4'><SideBar counts={count ||[]} /></div>
+     <div className=' p-4'><SideBar counts={count ||[]}  /></div>
      <div >
       <div><MainB /></div>
      <div><MainLow /></div>
@@ -45,6 +53,8 @@ function App() {
      </div>
      </div>
     </div>
+    </DataProvider>
+    </MantineProvider>
   )
 }
 

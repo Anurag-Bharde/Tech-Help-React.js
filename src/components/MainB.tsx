@@ -1,20 +1,22 @@
 import { useEffect,useRef } from 'react';
 import './Styles/MainB.css';
 import Chart from 'chart.js/auto';
+import { usePatient } from './Context/DataCont';
+import img1 from '../Images/heart.svg'
+import img2 from '../Images/temperature.svg'
+import img3 from '../Images/HeartBPM.svg'
 
 function MainB() {
     const chartRef = useRef<Chart | null>(null);
+    const {selectedPatient}=usePatient();
 
     useEffect(() => {
-        const data = [
-            { year: 2010, count: 10 },
-            { year: 2011, count: 20 },
-            { year: 2012, count: 15 },
-            { year: 2013, count: 25 },
-            { year: 2014, count: 22 },
-            { year: 2015, count: 30 },
-            { year: 2016, count: 28 },
-        ];
+        if (!selectedPatient) return;
+        const data = selectedPatient?.diagnosis_history.map((item)=>({
+            Months: item.month, 
+            BloodPresure: item.blood_pressure.systolic.value,
+            Diastolic: item.blood_pressure.diastolic.value
+        }));
 
         const ctx = document.getElementById('acquisitions') as HTMLCanvasElement;
 
@@ -25,20 +27,37 @@ function MainB() {
             chartRef.current = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: data.map(row => row.Months),
                     datasets: [{
-                        label: 'Acquisitions by year',
-                        data: data.map(row => row.count)
-                    }]
+                        label: 'Blood Pressure (Systolic)',
+                        data: data.map(row => row.BloodPresure),
+                        borderColor: 'rgb(194, 110, 180)',
+                        tension: 0.1
+                    },{
+                        label: 'Blood Pressure (Diastolic)',
+                        data: data.map(row => row.Diastolic),
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }
+                ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
                 }
             });
-        }   
+            
+        }
         return () => {
             if (chartRef.current) {
                 chartRef.current.destroy();
             }
         };
-    }, []); // Run once on component mount
+    }, [selectedPatient]); // Run once on component mount
 
     return (
         <div id='mainbb' className='grid grid-rows-7'>
@@ -52,13 +71,15 @@ function MainB() {
                 <div>
                     <div>
                         <div>Systolic</div>
-                        <div>120</div>
-                        <div>Higher than Average</div>
+                        <div>{selectedPatient?.diagnosis_history[0].blood_pressure.systolic.value}</div>
+                        <div>{selectedPatient?.diagnosis_history[0].blood_pressure.systolic.levels }</div>
+                        
                     </div>
                     <div>
                         <div>Diastolic</div>
-                        <div>78</div>
-                        <div>Lower than Average</div>
+                        <div>{selectedPatient?.diagnosis_history[0].blood_pressure.diastolic.value}</div>
+                        <div>{selectedPatient?.diagnosis_history[0].blood_pressure.diastolic.levels}</div>
+                        
                     </div>
                 </div>
 
@@ -67,14 +88,34 @@ function MainB() {
              <div className='grid grid-cols-3 gap-2'>
                 <div className='col-span-1'>
                     <div>
-                        <div>Image</div>
+                        <div>
+                            <img src={img1} alt='Respiratory' />
+                        </div>
                         <div>Respiratory Rate</div>
-                        <div>20 bpm</div>
-                        <div>Normal</div>
+                        <div>{selectedPatient?.diagnosis_history[0].respiratory_rate.value}</div>
+                        <div>{selectedPatient?.diagnosis_history[0].respiratory_rate.levels}</div>
                     </div>
                 </div>
-                <div className='col-span-1'>dsaf</div>
-                <div className='col-span-1'>dsaf</div>
+                <div className='col-span-1'>
+                <div>
+                        <div>
+                            <img src={img2} alt='Temprature' />
+                        </div>
+                        <div>Temperature</div>
+                        <div>{selectedPatient?.diagnosis_history[0].temperature.value}</div>
+                        <div>{selectedPatient?.diagnosis_history[0].temperature.levels}</div>
+                    </div>
+                </div>
+                <div className='col-span-1'>
+                <div>
+                        <div>
+                            <img src={img3} alt='heartBPM' />
+                        </div>
+                        <div>Heart Rate</div>
+                        <div>{selectedPatient?.diagnosis_history[0].heart_rate.value}</div>
+                        <div>{selectedPatient?.diagnosis_history[0].heart_rate.levels}</div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

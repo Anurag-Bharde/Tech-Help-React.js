@@ -1,7 +1,22 @@
 import '../components/Styles/Sidebar.css'
 import { Patient } from '../Type/types'
+import { usePatient } from './Context/DataCont'
+
+
 import side from '../Images/SideSearch.svg'
+import { useEffect } from 'react'
 const SideBar = ({counts}:{counts:Patient[]}) => {
+    const {selectedPatient} =usePatient();
+    const {setSelectedPatient}=usePatient();
+
+    useEffect(()=>{
+     const funcer=()=>{
+        if(selectedPatient==null){
+            setSelectedPatient(counts[1])
+        }
+     }
+    },[])
+
     return <div>
         <div id="SideBar" className='pt-2'>
             <div className='flex justify-around items-center pb-5'>
@@ -16,7 +31,13 @@ const SideBar = ({counts}:{counts:Patient[]}) => {
         <div className='overflow-y-auto h-[] '> {/* Changed to use percentage */}
             {counts.map((items) => {
                 return <div className='h-10 w-full px-4'> 
+                <div 
+                            key={items.name}
+                            className='h-10 w-full px-4 cursor-pointer hover:bg-gray-100'
+                            onClick={() => setSelectedPatient(items)}
+                        > 
                     <div className='truncate'>{items.name}</div>
+                    </div>
                 </div>
             })}
         </div>
