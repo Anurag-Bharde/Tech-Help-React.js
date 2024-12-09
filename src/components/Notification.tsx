@@ -15,8 +15,8 @@ const Notification = () => {
     <div id="NotifyBar" className="flex justify-between px-4 items-center bg-[#ffffff]">
         <img src={img1} alt="logo" />
         <div className="flex gap-4 items-center">
-            <div id="notifytitle1"><div className="flex gap-3"><img src={not1} alt="img"></img>Overview</div></div>
-            <div id="notifytitle1"><div className="flex gap-3"><img src={not2} alt="img"></img>Patients</div></div>
+            <div id="notifytitle1"><div className="flex gap-3 "><img src={not1} alt="img"></img>Overview</div></div>
+            <div id="notifytitle1"><div className="flex gap-3 bg-[#01F0D0] rounded-full px-2 py-1"><img src={not2} alt="img"></img>Patients</div></div>
             <div id="notifytitle1"><div className="flex gap-3"><img src={not3} alt="img"></img>Schedule</div></div>
             <div id="notifytitle1"><div className="flex gap-3"><img src={not4} alt="img"></img>Messages</div></div>
             <div id="notifytitle1"><div className="flex gap-3"><img src={not5} alt="img"></img>Transactions </div></div>

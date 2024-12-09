@@ -6,7 +6,27 @@ width: 367px;
 height: 760px;
 
 background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-background: #13aa91 0% 0% no-repeat padding-box;
+background: #ffffff 0% 0% no-repeat padding-box;
 border-radius: 16px;
 opacity: 1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #676767;
 }

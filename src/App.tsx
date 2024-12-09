@@ -39,7 +39,7 @@ function App() {
   return (
     <MantineProvider >
     <DataProvider initialPatients={count}>
-    <div className='bg-[#06F7F8] h-full'>
+    <div className='bg-[#f0f0f0] h-full'>
     <div className='pt-2 px-2'><Notification /></div>
     <div className='flex'>
      <div className=' p-4'><SideBar counts={count ||[]}  /></div>

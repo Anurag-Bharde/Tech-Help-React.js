@@ -3,8 +3,31 @@
 width: 716px;
 height: 282px;
 background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-background: #2e5bc5 0% 0% no-repeat padding-box;
+background: #ffffff 0% 0% no-repeat padding-box;
 border-radius: 16px;
 opacity: 1;
 margin-bottom: 15px;
+}
+
+
+::-webkit-scrollbar {
+
+    width: 9px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #E3E4E6;
+    border-radius: 15px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #072635;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #676767;
 }
